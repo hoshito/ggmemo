@@ -1,0 +1,57 @@
+.header {
+  padding: 1rem 0;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.rightContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.authButton {
+  text-transform: none !important;
+  background-color: var(--primary) !important;
+}
+
+.authButton:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.userName {
+  font-size: 0.875rem;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .authButton {
+    font-size: 0.875rem !important;
+  }
+}

@@ -1,0 +1,17 @@
+.main {
+  min-height: calc(
+    100vh - 48px - 200px
+  ); /* header height: 48px, estimated footer height: 200px */
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem 0;
+    min-height: calc(
+      100vh - 48px - 160px
+    ); /* モバイルではフッターが小さくなる */
+  }
+}

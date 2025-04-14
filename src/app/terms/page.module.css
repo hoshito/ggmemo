@@ -1,0 +1,4 @@
+.container {
+  composes: container from global;
+  padding-block: 2rem;
+}

@@ -1,0 +1,38 @@
+.titleInputContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  margin-inline: auto;
+}
+
+.titleInput {
+  width: 100%;
+  font-size: 1.2rem;
+  color: var(--foreground);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--divider);
+  padding: 8px 0;
+  transition: all 0.2s ease;
+}
+
+.titleInput:focus {
+  outline: none;
+  border-bottom-color: var(--key);
+}
+
+.titleInput::placeholder {
+  color: var(--foreground);
+  opacity: 0.6;
+}
+
+.characterCount {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  font-size: 0.8rem;
+  color: var(--foreground);
+  opacity: 0.7;
+  pointer-events: none;
+}

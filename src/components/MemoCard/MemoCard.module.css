@@ -1,0 +1,111 @@
+.cardWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0.75rem auto;
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    max-width: 95%;
+    margin: 0.75rem auto;
+  }
+
+  .cardContent {
+    padding: 16px;
+  }
+
+  .cardHeader {
+    padding: 16px;
+    min-height: 44px; /* タップターゲットサイズの確保 */
+  }
+
+  .resultBadge {
+    font-size: 1rem; /* モバイルでの視認性向上 */
+    padding: 8px 16px;
+  }
+
+  .memo {
+    font-size: 1rem; /* モバイルでの可読性向上 */
+  }
+}
+
+.card {
+  width: 100%;
+  border: 1px solid var(--divider);
+  border-radius: 4px;
+  background-color: var(--surface);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px; /* タップターゲットサイズの確保 */
+}
+
+.card:hover {
+  background-color: var(--hover);
+  transform: translateY(-1px);
+  border-color: var(--key);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card:focus-visible {
+  border-color: var(--key);
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--key);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.resultBadge {
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-right: 12px;
+  color: var(--foreground);
+  background-color: var(--key);
+  transition: transform 0.2s ease;
+  min-width: 70px;
+  text-align: center;
+}
+
+.win {
+  border-top: 3px solid var(--result-win);
+}
+
+.lose {
+  border-top: 3px solid var(--result-lose);
+}
+
+.card:hover .resultBadge {
+  transform: translateX(2px);
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.memo {
+  margin: 0;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}

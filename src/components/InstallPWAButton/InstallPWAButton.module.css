@@ -1,0 +1,15 @@
+.installButton {
+  text-transform: none !important;
+  background-color: var(--primary) !important;
+  margin-left: auto !important;
+}
+
+.installButton:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+@media (max-width: 768px) {
+  .installButton {
+    font-size: 0.875rem !important;
+  }
+}

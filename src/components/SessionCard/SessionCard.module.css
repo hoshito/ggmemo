@@ -1,0 +1,28 @@
+.card {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  background-color: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--hover);
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: var(--foreground);
+}
+
+.card p {
+  margin: 0.25rem 0;
+  color: var(--foreground);
+  opacity: 0.8;
+  font-size: 0.9rem;
+}

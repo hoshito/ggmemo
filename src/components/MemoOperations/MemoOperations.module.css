@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.actionButton {
+  padding: 4px 12px;
+  background: var(--surface);
+  border: none;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.actionButton:hover {
+  background: var(--hover);
+}
+
+.deleteButton {
+  color: #e25c5c;
+}
+
+.deleteButton:hover {
+  background: rgba(226, 92, 92, 0.1);
+}
