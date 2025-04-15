@@ -1,0 +1,209 @@
+.container {
+  margin-block: 0; /* マージン削除（親コンテナで制御） */
+  background: var(--secondary);
+  border-radius: 8px; /* 統一されたボーダーラディウス */
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%; /* 幅を親コンテナに合わせる */
+}
+
+.resultsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  padding: 1.5rem 1rem 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(61, 61, 102, 0.6) 0%,
+    var(--secondary) 100%
+  );
+}
+
+.centerDivider {
+  position: absolute;
+  height: 80%;
+  width: 1px;
+  background: var(--divider);
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  box-shadow: 0 0 8px var(--key);
+}
+
+.resultBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.resultValue {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.resultLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-top: 0.3rem;
+  z-index: 2;
+}
+
+.winBlock {
+  position: relative;
+}
+
+.winBlock::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(74, 222, 128, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.winValue {
+  color: var(--result-win);
+}
+
+.loseBlock {
+  position: relative;
+}
+
+.loseBlock::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(96, 165, 250, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.loseValue {
+  color: var(--result-lose);
+}
+
+.statsFooter {
+  background: var(--secondary);
+  padding: 0.75rem 1rem 1rem;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.progressBar {
+  height: 10px;
+  background: var(--result-lose);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--result-win);
+  border-radius: 5px 0 0 5px;
+  transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+.progressLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.winPercent {
+  color: var(--result-win);
+}
+
+.losePercent {
+  color: var(--result-lose);
+  text-align: right;
+}
+
+.decoration {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.03;
+  background: var(--foreground);
+  pointer-events: none;
+}
+
+.decoration1 {
+  width: 120px;
+  height: 120px;
+  top: -60px;
+  left: -60px;
+}
+
+.decoration2 {
+  width: 80px;
+  height: 80px;
+  bottom: -30px;
+  right: -30px;
+}
+
+/* ゲーマー風の装飾 */
+.diagonalLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+  .resultValue {
+    font-size: 2.5rem;
+  }
+
+  .resultLabel {
+    font-size: 0.8rem;
+  }
+}

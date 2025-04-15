@@ -1,38 +1,45 @@
 .titleInputContainer {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* マージンを少し減らす */
   margin-inline: auto;
+  /* 枠線と背景を削除してシンプルに */
+  border: none;
+  border-radius: 0;
+  padding: 8px 0; /* 上下のパディングだけ残す */
+  background-color: transparent;
 }
 
 .titleInput {
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem; /* フォントサイズを小さく */
   color: var(--foreground);
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid var(--divider);
-  padding: 8px 0;
+  border-bottom: 1px solid var(--divider); /* ボーダーを薄く */
+  padding: 4px 0; /* パディングを少し減らす */
   transition: all 0.2s ease;
+  opacity: 0.9; /* 少し透明に */
 }
 
 .titleInput:focus {
   outline: none;
   border-bottom-color: var(--key);
+  opacity: 1; /* フォーカス時は不透明に */
 }
 
 .titleInput::placeholder {
   color: var(--foreground);
-  opacity: 0.6;
+  opacity: 0.5; /* プレースホルダーをより薄く */
+  font-style: italic; /* 斜体にして控えめに */
 }
 
 .characterCount {
   position: absolute;
-  right: 0;
-  bottom: -20px;
-  font-size: 0.8rem;
+  right: 0; /* パディングがなくなったので位置調整 */
+  bottom: 0;
+  font-size: 0.7rem; /* さらに小さく */
   color: var(--foreground);
-  opacity: 0.7;
+  opacity: 0.6; /* より薄く */
   pointer-events: none;
 }

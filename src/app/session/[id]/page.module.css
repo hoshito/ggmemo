@@ -13,18 +13,27 @@
 }
 
 .backLink {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: transparent;
   color: var(--foreground);
   text-decoration: none;
   border-radius: 4px;
   font-size: 0.9rem;
-  transition: background-color 0.2s ease;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  gap: 6px;
 }
 
-.backLink:hover {
-  background-color: var(--secondary);
+.backLink::before {
+  content: "←";
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 4px;
+  color: var(--foreground); /* 矢印の色を前景色と同じ濃い色に */
 }
 
 .actionButton {
@@ -47,6 +56,72 @@
 
 .deleteButton:hover {
   background: rgba(226, 92, 92, 0.1);
+}
+
+/* 入力フォーム用のセクション - 枠線なしに変更 */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  /* 枠線と背景色を削除 */
+  background-color: transparent;
+  border-radius: 12px;
+  padding: 0; /* パディングを削除 */
+  box-shadow: none; /* 影も削除 */
+}
+
+/* コンポーネントのラッパー */
+.componentWrapper {
+  width: 100%;
+  margin-bottom: 16px; /* コンポーネント間の間隔を少し縮小 */
+  position: relative;
+}
+
+/* 最後のcomponentWrapperの下マージンを削除 */
+.componentWrapper:last-child {
+  margin-bottom: 0;
+}
+
+/* コンポーネント間の区切り線（最後のコンポーネントを除く） */
+.componentWrapper:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--divider-color, rgba(255, 255, 255, 0.1)),
+    transparent
+  );
+}
+
+/* メモリスト関連のスタイル */
+.memoListContainer {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  background-color: var(--card-bg, rgba(255, 255, 255, 0.05));
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 統計情報のラッパー */
+.statsWrapper {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--divider-color, rgba(255, 255, 255, 0.1));
+}
+
+/* メモリストのラッパー */
+.memoListWrapper {
+  width: 100%;
 }
 
 .newMemoForm {

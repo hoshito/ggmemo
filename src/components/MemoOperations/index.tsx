@@ -1,7 +1,7 @@
 import styles from "./MemoOperations.module.css";
 
 interface MemoOperationsProps {
-  onViewStats: () => void;
+  onViewStats: () => void;  // 関数名はそのままにしておきます
   onDeleteAll?: () => void;
 }
 
@@ -12,7 +12,7 @@ export default function MemoOperations({
   return (
     <div className={styles.container}>
       <button className={styles.actionButton} onClick={onViewStats}>
-        View Stats
+        View Markdown
       </button>
       {onDeleteAll && (
         <button

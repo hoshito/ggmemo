@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import TitleInput from "@/components/TitleInput";
 import MemoList from "@/components/MemoList";
 import MemoForm from "@/components/MemoForm";
 import StatsView from "@/components/StatsView";
 import AboutSection from "@/components/AboutSection";
+import SessionStats from "@/components/SessionStats";
 import styles from "./page.module.css";
 import { useMemos } from "@/hooks/useMemos";
 import { Memo } from "@/types/memo";
@@ -28,36 +28,39 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div style={{ minHeight: "90vh", position: "relative" }}>
-        {/* New memo form */}
-        <div className={styles.newMemoForm}>
-          <TitleInput
-            value={title}
-            onChange={setTitle}
-            placeholder="Enter title ..."
-            aria-label="Memo title"
-          />
-          <MemoForm
-            onSave={handleAddMemo}
-            hideRating={true}
-            memosCount={totalMemos}
-          />
+        {/* Title and memo form section */}
+        <div className={styles.formSection}>
+          <div className={styles.componentWrapper}>
+            <MemoForm
+              onSave={handleAddMemo}
+              hideRating={true}
+              memosCount={totalMemos}
+            />
+          </div>
         </div>
 
-        {/* Memo list */}
+        {/* Memo list with stats section */}
         {totalMemos > 0 && (
           <div className={styles.memoListContainer}>
-            <MemoList
-              memos={memos}
-              onEdit={updateMemo}
-              onDelete={deleteMemo}
-              onViewStats={() => setIsStatsOpen(true)}
-              onDeleteAll={deleteAllMemos}
-              hideRating={true}
-            />
+            {/* Stats display inside the memo list container */}
+            <div className={styles.statsWrapper}>
+              <SessionStats memos={memos} />
+            </div>
+
+            <div className={styles.memoListWrapper}>
+              <MemoList
+                memos={memos}
+                onEdit={updateMemo}
+                onDelete={deleteMemo}
+                onViewStats={() => setIsStatsOpen(true)}
+                onDeleteAll={deleteAllMemos}
+                hideRating={true}
+              />
+            </div>
           </div>
         )}
 
-        {/* Stats modal */}
+        {/* Markdown export modal */}
         <StatsView
           memos={memos}
           isOpen={isStatsOpen}
