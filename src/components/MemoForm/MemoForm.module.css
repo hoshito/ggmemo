@@ -99,7 +99,7 @@
 }
 
 .formSection {
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0; /* 下マージンを16pxから12pxに縮小 */
 }
 
 .formSection:last-child {
@@ -122,8 +122,7 @@
 }
 
 .ratingContainer {
-  margin-top: 16px;
-  margin-bottom: 0px;
+  margin: 0; /* 親要素のformSectionがマージンを持っているので、こちらは0に設定 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,7 +132,7 @@
   width: 100%;
   height: 200px;
   padding: 16px;
-  margin-block: 1rem 0.75rem;
+  margin-block: 0.5rem 0.75rem; /* 上マージンは0.5rem維持 */
   border: 2px solid var(--divider);
   background-color: rgba(255, 255, 255, 0.25);
   color: var(--foreground);
@@ -161,6 +160,7 @@
 .memoInputContainer {
   position: relative;
   width: 100%;
+  margin-top: 4px; /* テキストエリア周りのスペーシング調整 */
 }
 
 .charCount {
@@ -183,7 +183,7 @@
 }
 
 .btn {
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 8px; /* 統一ボーダーラディウス */
   cursor: pointer;
   font-weight: 500;
@@ -192,6 +192,7 @@
   transition: all 0.2s ease;
   font-family: inherit;
   min-width: 80px;
+  min-height: 40px; /* デスクトップでも十分なタップ領域を確保 */
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }

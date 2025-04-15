@@ -122,6 +122,7 @@ export default function MemoForm({
           role="group"
           aria-label="Performance Rating"
           className={styles.formSection}
+          style={{ marginBottom: '8px' }} /* 直接スタイルで調整 */
         >
           <div className={styles.ratingContainer}>
             <RatingInput
@@ -134,15 +135,15 @@ export default function MemoForm({
                 size="small"
                 aria-label="rating help"
                 sx={{
-                  marginLeft: '8px',
-                  padding: '1px',
+                  marginLeft: '12px',
+                  padding: '4px',
                   color: '#FFFFFF',
-                  width: '16px',
-                  height: '16px',
-                  minHeight: '16px'
+                  width: '24px',
+                  height: '24px',
+                  minHeight: '24px'
                 }}
               >
-                <HelpOutlineIcon sx={{ fontSize: '0.875rem' }} />
+                <HelpOutlineIcon sx={{ fontSize: '1rem' }} />
               </IconButton>
             </Tooltip>
           </div>
@@ -150,7 +151,11 @@ export default function MemoForm({
       )}
 
       {/* Memo input */}
-      <div role="group" aria-labelledby="memo-label">
+      <div
+        role="group"
+        aria-labelledby="memo-label"
+        style={{ marginTop: '8px' }} /* 直接スタイルで調整 */
+      >
         <label id="memo-label" className={styles.visuallyHidden}>
           Game Memo
         </label>
