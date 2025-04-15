@@ -46,7 +46,7 @@ export default function Home() {
             <div className={styles.statsWrapper}>
               <SessionStats memos={memos} />
             </div>
-            
+
             <div className={styles.memoListWrapper}>
               <MemoList
                 memos={memos}

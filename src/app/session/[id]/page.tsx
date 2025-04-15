@@ -168,7 +168,7 @@ export default function SessionPage() {
   return (
     <div className={styles.container}>
       <div className={styles.pageHeader}>
-        <Link href="/mypage" className={styles.backLink}>← Back to My Sessions</Link>
+        <Link href="/mypage" className={styles.backLink}>Back to My Sessions</Link>
         <button
           onClick={handleDeleteSession}
           className={`${styles.actionButton} ${styles.deleteButton}`}
@@ -178,27 +178,45 @@ export default function SessionPage() {
         </button>
       </div>
 
-      <div className={styles.newMemoForm}>
-        <TitleInput
-          value={title}
-          onChange={setTitle}
-          onBlur={handleTitleUpdate}
-          placeholder="Enter title ..."
-          aria-label="Session title"
-          ref={titleInputRef}
-        />
+      {/* 入力フォームセクション */}
+      <div className={styles.formSection}>
+        <div className={styles.componentWrapper}>
+          <TitleInput
+            value={title}
+            onChange={setTitle}
+            onBlur={handleTitleUpdate}
+            placeholder="Enter title ..."
+            aria-label="Session title"
+            ref={titleInputRef}
+          />
+        </div>
 
-        <SessionStats memos={memos} />
-
-        <MemoForm onSave={handleAddMemo} memosCount={memosCount} />
-        <MemoList
-          memos={memos}
-          onEdit={handleUpdateMemo}
-          onDelete={handleDeleteMemo}
-          onViewStats={() => setIsStatsViewOpen(true)}
-        />
+        <div className={styles.componentWrapper}>
+          <MemoForm onSave={handleAddMemo} memosCount={memosCount} />
+        </div>
       </div>
 
+      {/* メモリストと統計情報セクション */}
+      {memos.length > 0 && (
+        <div className={styles.memoListContainer}>
+          {/* 統計情報表示 */}
+          <div className={styles.statsWrapper}>
+            <SessionStats memos={memos} />
+          </div>
+
+          {/* メモリスト */}
+          <div className={styles.memoListWrapper}>
+            <MemoList
+              memos={memos}
+              onEdit={handleUpdateMemo}
+              onDelete={handleDeleteMemo}
+              onViewStats={() => setIsStatsViewOpen(true)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Markdown export modal */}
       <StatsView
         memos={memos}
         isOpen={isStatsViewOpen}

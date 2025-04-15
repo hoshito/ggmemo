@@ -50,13 +50,18 @@
 
 /* コンポーネント間の区切り線（最後のコンポーネントを除く） */
 .componentWrapper:not(:last-child)::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--divider-color, rgba(255, 255, 255, 0.1)), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--divider-color, rgba(255, 255, 255, 0.1)),
+    transparent
+  );
 }
 
 .commonComponent {
