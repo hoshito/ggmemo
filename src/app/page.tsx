@@ -5,6 +5,7 @@ import MemoList from "@/components/MemoList";
 import MemoForm from "@/components/MemoForm";
 import StatsView from "@/components/StatsView";
 import AboutSection from "@/components/AboutSection";
+import SessionStats from "@/components/SessionStats";
 import styles from "./page.module.css";
 import { useMemos } from "@/hooks/useMemos";
 import { Memo } from "@/types/memo";
@@ -36,6 +37,10 @@ export default function Home() {
             placeholder="Enter title ..."
             aria-label="Memo title"
           />
+          
+          {/* SessionStats コンポーネントを追加 */}
+          <SessionStats memos={memos} />
+          
           <MemoForm
             onSave={handleAddMemo}
             hideRating={true}
