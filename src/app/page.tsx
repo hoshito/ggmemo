@@ -11,7 +11,6 @@ import { Memo } from "@/types/memo";
 
 export default function Home() {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
-  const [title, setTitle] = useState("");
   const {
     memos,
     totalMemos,
@@ -22,7 +21,7 @@ export default function Home() {
   } = useMemos();
 
   const handleAddMemo = (newMemoData: Omit<Memo, "id" | "createdAt">) => {
-    addMemo({ ...newMemoData, title });
+    addMemo({ ...newMemoData });
   };
 
   return (
@@ -65,7 +64,7 @@ export default function Home() {
           memos={memos}
           isOpen={isStatsOpen}
           onClose={() => setIsStatsOpen(false)}
-          sessionTitle={title || "Quick Session"}
+          sessionTitle={"Quick Session"}
           hideRating={true}
         />
       </div>
