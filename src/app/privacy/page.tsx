@@ -108,7 +108,7 @@ export default function PrivacyPage() {
           <li>All data transfers use secure HTTPS connections</li>
           <li>User authentication is handled through secure OAuth protocols</li>
         </ul>
-        
+
         <div style={{ marginTop: "1.5rem", padding: "1rem", border: "1px solid #ccc", borderRadius: "4px", backgroundColor: "rgba(0, 0, 0, 0.03)" }}>
           <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}><strong>Important Notice:</strong></p>
           <p>GGMemo is a personal project developed by an individual developer, not a large company with extensive security resources. While we implement reasonable security measures, we cannot guarantee absolute protection against all potential security incidents.</p>
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
 
       <section style={{ marginTop: "2rem" }}>
         <h2>7. Contact</h2>
-        <p>If you have any questions about this privacy policy or how we handle your data, please contact us at <a href="https://x.com/pokekoyomi" target="_blank" rel="noopener noreferrer">@pokekoyomi</a> on X (formerly Twitter).</p>
+        <p>If you have any questions about this privacy policy or how we handle your data, please contact us at <a href="https://x.com/hoshitonton" target="_blank" rel="noopener noreferrer">@hoshitonton</a> on X (formerly Twitter).</p>
       </section>
 
       <p style={{ marginTop: "3rem", fontSize: "1rem", fontWeight: "bold", borderTop: "1px solid #ccc", paddingTop: "1rem" }}>Last updated: April 15, 2025</p>

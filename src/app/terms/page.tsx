@@ -65,7 +65,7 @@ export default function TermsPage() {
 
       <section style={{ marginTop: "2rem" }}>
         <h2>9. Contact</h2>
-        <p>For questions or concerns about these terms, please contact us at <a href="https://x.com/pokekoyomi" target="_blank" rel="noopener noreferrer">@pokekoyomi</a> on X (formerly Twitter).</p>
+        <p>For questions or concerns about these terms, please contact us at <a href="https://x.com/hoshitonton" target="_blank" rel="noopener noreferrer">@hoshitonton</a> on X (formerly Twitter).</p>
       </section>
 
       <p style={{ marginTop: "3rem", fontSize: "1rem", fontWeight: "bold", borderTop: "1px solid #ccc", paddingTop: "1rem" }}>Last updated: April 15, 2025</p>

@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     title: "GGMemo - Track Your Gaming Journey",
     description: "A competitive gaming companion for tracking matches, analyzing strategies, and improving your gameplay",
     images: ["https://ggmemo.pokekoyomi.com/favicon.svg"],
-    creator: "@pokekoyomi",
-    site: "@pokekoyomi",
+    creator: "@hoshitonton",
+    site: "@hoshitonton",
   },
 
   icons: {

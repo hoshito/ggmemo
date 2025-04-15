@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
         <div className={styles.copyright}>
           © {new Date().getFullYear()} GGMemo. All rights reserved.
-          <Link href="https://x.com/pokekoyomi" target="_blank" rel="noopener noreferrer" className={styles.link}>@pokekoyomi</Link>
+          <Link href="https://x.com/hoshitonton" target="_blank" rel="noopener noreferrer" className={styles.link}>@hoshitonton</Link>
         </div>
       </div>
     </footer>

@@ -117,7 +117,7 @@ export default function Header() {
               onClick={() => setIsSignInModalOpen(true)}
               className={styles.authButton}
             >
-              Sign In (Beta)
+              Sign In
             </Button>
           )}
         </div>
