@@ -7,6 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import MemoList from "@/components/MemoList";
 import MemoForm from "@/components/MemoForm";
+import SessionStats from "@/components/SessionStats";
 import { BattleSession } from "@/types/battleSession";
 import { MemoFormData } from "@/types/memo";
 import {
@@ -186,6 +187,9 @@ export default function SessionPage() {
           aria-label="Session title"
           ref={titleInputRef}
         />
+
+        <SessionStats memos={memos} />
+
         <MemoForm onSave={handleAddMemo} memosCount={memosCount} />
         <MemoList
           memos={memos}
