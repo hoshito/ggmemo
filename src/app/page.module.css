@@ -10,6 +10,24 @@
   padding-block: 2rem;
 }
 
+/* 統一UIのための新しいセクション */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.componentWrapper {
+  width: 100%;
+  margin-bottom: 24px; /* すべてのコンポーネント間の統一マージン */
+}
+
+.commonComponent {
+  border-radius: 8px; /* 統一されたボーダーラディウス */
+}
+
 .myPageLink {
   display: inline-block;
   padding: 8px 16px;
@@ -96,4 +114,7 @@
 
 .memoListContainer {
   margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
 }

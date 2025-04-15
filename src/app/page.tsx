@@ -29,23 +29,29 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div style={{ minHeight: "90vh", position: "relative" }}>
-        {/* New memo form */}
-        <div className={styles.newMemoForm}>
-          <TitleInput
-            value={title}
-            onChange={setTitle}
-            placeholder="Enter title ..."
-            aria-label="Memo title"
-          />
-          
-          {/* SessionStats コンポーネントを追加 */}
-          <SessionStats memos={memos} />
-          
-          <MemoForm
-            onSave={handleAddMemo}
-            hideRating={true}
-            memosCount={totalMemos}
-          />
+        {/* New memo form section */}
+        <div className={styles.formSection}>
+          <div className={styles.componentWrapper}>
+            <TitleInput
+              value={title}
+              onChange={setTitle}
+              placeholder="Enter title ..."
+              aria-label="Memo title"
+              className={styles.commonComponent}
+            />
+          </div>
+
+          <div className={styles.componentWrapper}>
+            <SessionStats memos={memos} />
+          </div>
+
+          <div className={styles.componentWrapper}>
+            <MemoForm
+              onSave={handleAddMemo}
+              hideRating={true}
+              memosCount={totalMemos}
+            />
+          </div>
         </div>
 
         {/* Memo list */}

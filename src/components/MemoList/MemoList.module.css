@@ -41,24 +41,27 @@
 .memoList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 30px;
+  gap: 16px; /* 統一された間隔 */
+  margin-bottom: 24px; /* 統一された間隔 */
+  width: 100%;
 }
 
 .memoItem {
   width: 100%;
+  /* MemoCardが8pxのボーダーラディウスを持つように修正 */
 }
 
 .emptyList {
   text-align: center;
   padding: 32px 16px;
   background-color: var(--surface);
-  border-radius: 8px;
+  border-radius: 8px; /* 統一されたボーダーラディウス */
   font-size: 1rem;
   color: var(--foreground);
-  margin: 16px 8px 24px;
+  margin: 16px 0 24px;
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }

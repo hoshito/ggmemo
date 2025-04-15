@@ -1,13 +1,13 @@
 .cardWrapper {
   width: 100%;
-  max-width: 500px;
-  margin: 0.75rem auto;
+  max-width: 600px; /* 統一された幅 */
+  margin: 0 auto; /* 親コンポーネントでマージン制御 */
 }
 
 @media (max-width: 768px) {
   .cardWrapper {
-    max-width: 95%;
-    margin: 0.75rem auto;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .cardContent {
@@ -32,7 +32,7 @@
 .card {
   width: 100%;
   border: 1px solid var(--divider);
-  border-radius: 4px;
+  border-radius: 8px; /* 統一されたボーダーラディウス */
   background-color: var(--surface);
   overflow: hidden;
   transition: all 0.2s ease;
@@ -72,7 +72,7 @@
 .resultBadge {
   font-weight: 600;
   padding: 6px 12px;
-  border-radius: 3px;
+  border-radius: 4px; /* バッジは少し小さめのラディウス */
   font-size: 0.85rem;
   letter-spacing: 0.8px;
   text-transform: uppercase;

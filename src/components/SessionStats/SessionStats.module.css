@@ -1,13 +1,14 @@
 .container {
-  margin-block: 2rem;
+  margin-block: 0; /* マージン削除（親コンテナで制御） */
   background: var(--secondary);
-  border-radius: 12px;
+  border-radius: 8px; /* 統一されたボーダーラディウス */
   padding: 0;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%; /* 幅を親コンテナに合わせる */
 }
 
 .resultsContainer {
