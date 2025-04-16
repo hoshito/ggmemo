@@ -36,19 +36,19 @@ export const metadata: Metadata = {
     description: "A competitive gaming companion for tracking matches, analyzing strategies, and improving your gameplay",
     images: [
       {
-        url: "https://ggmemo.pokekoyomi.com/favicon.svg",
-        width: 32,
-        height: 32,
+        url: "https://ggmemo.pokekoyomi.com/icon-512x512.png",
+        width: 512,
+        height: 512,
         alt: "GGMemo - Your Gaming Companion",
       }
     ],
   },
 
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "GGMemo - Track Your Gaming Journey",
     description: "A competitive gaming companion for tracking matches, analyzing strategies, and improving your gameplay",
-    images: ["https://ggmemo.pokekoyomi.com/favicon.svg"],
+    images: ["https://ggmemo.pokekoyomi.com/icon-512x512.png"],
     creator: "@hoshitonton",
     site: "@hoshitonton",
   },
