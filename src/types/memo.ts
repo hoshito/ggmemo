@@ -5,6 +5,7 @@ export interface Memo {
   id: string;
   title: string;
   result: "WIN" | "LOSE";
+  rating: number;
   memo: string;
   createdAt: string;
 }

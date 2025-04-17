@@ -60,7 +60,9 @@ const ResultBadge = Node.create({
 });
 
 // エディタ内のWIN/LOSEバッジをカウントする関数
-const countResultBadges = (editor: Editor) => {
+const countResultBadges = (editor: Editor | null) => {
+  if (!editor) return { win: 0, lose: 0 };
+
   let winCount = 0;
   let loseCount = 0;
   editor.state.doc.descendants(node => {

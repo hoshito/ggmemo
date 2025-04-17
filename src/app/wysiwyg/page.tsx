@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useState, useEffect, useRef } from "react";
-import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import { Node } from '@tiptap/core';
-import { ReactNodeViewRenderer, NodeViewWrapper } from '@tiptap/react';
+import { ReactNodeViewRenderer, NodeViewWrapper, NodeViewProps } from '@tiptap/react';
 import Link from 'next/link';
 import styles from "./page.module.css";
 import { Memo } from "@/types/memo";
@@ -19,7 +19,7 @@ const CHARACTER_LIMIT = 5000;
 const SAVE_DEBOUNCE_TIME = 500;
 
 // ResultBadgeViewコンポーネントの修正版 - NodeViewWrapperを使用
-const ResultBadgeView = ({ node }) => {
+const ResultBadgeView = ({ node }: NodeViewProps) => {
   const result = node.attrs.result;
 
   return (
@@ -81,7 +81,9 @@ const ResultBadge = Node.create({
 });
 
 // エディタ内のWIN/LOSEバッジをカウントする関数
-const countResultBadges = (editor) => {
+const countResultBadges = (editor: Editor | null) => {
+  if (!editor) return { win: 0, lose: 0 };
+
   let winCount = 0;
   let loseCount = 0;
   editor.state.doc.descendants(node => {
@@ -98,7 +100,7 @@ const countResultBadges = (editor) => {
 };
 
 // エディタの文字数をカウントする関数
-const countCharacters = (editor) => {
+const countCharacters = (editor: Editor | null) => {
   return editor?.state.doc.textContent.length || 0;
 };
 
@@ -159,6 +161,7 @@ export default function WysiwygPage() {
         id: `win-${i}`,
         title: 'Game',
         result: 'WIN' as const,
+        rating: 3, // デフォルト値として3を設定
         memo: '',
         createdAt: new Date().toISOString(),
       }));
@@ -166,6 +169,7 @@ export default function WysiwygPage() {
         id: `lose-${i}`,
         title: 'Game',
         result: 'LOSE' as const,
+        rating: 3, // デフォルト値として3を設定
         memo: '',
         createdAt: new Date().toISOString(),
       }));
@@ -189,6 +193,7 @@ export default function WysiwygPage() {
         id: `win-${i}`,
         title: 'Game',
         result: 'WIN' as const,
+        rating: 3, // デフォルト値として3を設定
         memo: '',
         createdAt: new Date().toISOString(),
       }));
@@ -196,6 +201,7 @@ export default function WysiwygPage() {
         id: `lose-${i}`,
         title: 'Game',
         result: 'LOSE' as const,
+        rating: 3, // デフォルト値として3を設定
         memo: '',
         createdAt: new Date().toISOString(),
       }));
