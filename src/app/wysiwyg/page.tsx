@@ -6,6 +6,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import { Node } from '@tiptap/core';
 import { ReactNodeViewRenderer, NodeViewWrapper } from '@tiptap/react';
+import Link from 'next/link';
 import styles from "./page.module.css";
 import { Memo } from "@/types/memo";
 
@@ -14,7 +15,7 @@ const ResultBadgeView = ({ node }) => {
   const result = node.attrs.result;
 
   return (
-    <NodeViewWrapper>
+    <NodeViewWrapper as="span" className="inline-node-view-wrapper">
       <span className={styles[result === 'WIN' ? 'winBadge' : 'loseBadge']}>
         {result}
       </span>
@@ -27,7 +28,7 @@ const ResultBadge = Node.create({
   name: 'resultBadge',
   group: 'inline',
   inline: true,
-  atom: true,
+  // atom: trueを削除して通常のインライン要素として扱う
   selectable: true,
   draggable: true,
 
@@ -104,7 +105,7 @@ export default function WysiwygPage() {
       }),
       ResultBadge,
     ],
-    content: '<p>Write your game notes here...</p>',
+    content: '',
     onUpdate: ({ editor }) => {
       const resultCounts = countResultBadges(editor);
 
@@ -127,9 +128,11 @@ export default function WysiwygPage() {
     },
   });
 
-  // WIN/LOSEを挿入するハンドラー
+  // WIN/LOSEを挿入するハンドラー - スペースを追加して継続して入力できるように
   const handleInsertBadge = useCallback((result: Memo['result']) => {
     editor?.chain().focus().insertContent({ type: 'resultBadge', attrs: { result } }).run();
+    // カーソルを末尾に移動して入力を継続できるようにする
+    editor?.chain().focus().run();
   }, [editor]);
 
   return (
@@ -180,6 +183,11 @@ export default function WysiwygPage() {
                     : '0%'}
                 </span>
               </div>
+            </div>
+            {/* ホームへのリンクと著作表記を追加 */}
+            <div className={styles.homeLink}>
+              <Link href="/" title="Return to Home">← Home</Link>
+              <div className={styles.copyright}>© GGMemo</div>
             </div>
           </div>
         </div>
