@@ -1,0 +1,146 @@
+/* インライン結果バッジのスタイル */
+.resultBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin: 0 2px;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: normal;
+  vertical-align: middle;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.resultBadge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.win {
+  background-color: rgba(74, 222, 128, 0.2);
+  border: 1px solid var(--result-win);
+  color: var(--result-win);
+}
+
+.lose {
+  background-color: rgba(96, 165, 250, 0.2);
+  border: 1px solid var(--result-lose);
+  color: var(--result-lose);
+}
+
+/* 編集モードのスタイル */
+.editingContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  background-color: var(--secondary);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--divider);
+  line-height: normal;
+  vertical-align: middle;
+  z-index: 100;
+  position: absolute;
+  /* 位置の調整 */
+  transform: translateY(-50%);
+  margin-top: -5px;
+}
+
+.editButton {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: bold;
+  touch-action: manipulation; /* タッチデバイス用の最適化 */
+}
+
+.editButton.winButton {
+  background-color: rgba(74, 222, 128, 0.2);
+  border: 1px solid var(--result-win);
+  color: var(--result-win);
+}
+
+.editButton.winButton:hover {
+  background-color: rgba(74, 222, 128, 0.3);
+}
+
+.editButton.loseButton {
+  background-color: rgba(96, 165, 250, 0.2);
+  border: 1px solid var(--result-lose);
+  color: var(--result-lose);
+}
+
+.editButton.loseButton:hover {
+  background-color: rgba(96, 165, 250, 0.3);
+}
+
+.cancelButton {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--foreground);
+  border: none;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation; /* タッチデバイス用の最適化 */
+}
+
+.cancelButton:hover {
+  background-color: var(--hover);
+  color: var(--foreground);
+}
+
+/* モバイルデバイス向けのスタイル調整 */
+@media (max-width: 768px) {
+  .resultBadge {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+  }
+
+  .editingContainer {
+    position: absolute;
+    top: auto;
+    bottom: auto;
+    left: 0;
+    transform: translateY(-25%);
+    background-color: var(--secondary);
+    padding: 6px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-top: -15px;
+    z-index: 1000;
+  }
+
+  .editButton {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}
+
+/* 小型デバイス向け */
+@media (max-width: 480px) {
+  .editingContainer {
+    width: auto;
+    max-width: 90%;
+    justify-content: space-between;
+  }
+
+  .editButton {
+    flex: 1;
+  }
+}

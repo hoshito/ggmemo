@@ -1,0 +1,71 @@
+.container {
+  max-width: 800px;
+  width: 100%; /* ページ幅いっぱいに広げる */
+  margin: 0 auto;
+  padding: 1rem;
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 子要素を中央寄せ */
+  gap: 1.5rem;
+}
+
+.editorWrapper {
+  width: 100%;
+  /* 幅固定かつ中央寄せ */
+  max-width: 600px;
+  margin: 0 auto;
+  flex: 0 0 auto; /* Prevent shrinking */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.statsWrapper {
+  width: 100%;
+  /* 幅固定かつ中央寄せ */
+  max-width: 600px;
+  margin: 0 auto;
+  flex: 0 0 auto; /* Prevent shrinking */
+  /* display:flexを削除して縮小を防ぐ */
+  /* justify-content:centerも不要 */
+  /* display: flex; */
+  /* justify-content: center; */
+  margin-top: 1rem;
+}
+
+/* セッション統計情報用のセクション */
+.statsSection {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+}
+
+/* 小型デバイス向け */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+    gap: 0.75rem;
+  }
+}
+
+.container {
+  /* global container を継承して幅を固定・中央寄せ */
+  composes: container from global;
+  /* 縦方向の余白を調整 */
+  margin-block: 1rem;
+  /* flex レイアウトを解除 */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* gap: 1.5rem; */
+}
