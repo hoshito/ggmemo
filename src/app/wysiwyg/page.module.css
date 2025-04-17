@@ -149,6 +149,12 @@
   transform: translateY(-1px);
 }
 
+.inputButton:disabled {
+  background-color: rgba(var(--foreground-rgb), 0.3);
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* 勝敗バッジ */
 .winBadge {
   background-color: rgba(74, 222, 128, 0.2);
@@ -219,6 +225,35 @@
   font-size: 1.1rem;
   font-weight: bold;
   color: var(--foreground);
+}
+
+/* 文字数制限警告 */
+.limitWarning {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(244, 63, 94, 0.9);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  max-width: 90%;
+  text-align: center;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
 }
 
 /* レスポンシブデザイン */

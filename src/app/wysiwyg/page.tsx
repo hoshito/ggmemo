@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -9,6 +9,14 @@ import { ReactNodeViewRenderer, NodeViewWrapper } from '@tiptap/react';
 import Link from 'next/link';
 import styles from "./page.module.css";
 import { Memo } from "@/types/memo";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+
+// localStorageのキー
+const EDITOR_CONTENT_KEY = 'wysiwyg-editor-content';
+// 文字数制限（5000文字）
+const CHARACTER_LIMIT = 5000;
+// 保存のデバウンス時間（ミリ秒）
+const SAVE_DEBOUNCE_TIME = 500;
 
 // ResultBadgeViewコンポーネントの修正版 - NodeViewWrapperを使用
 const ResultBadgeView = ({ node }) => {
@@ -89,8 +97,34 @@ const countResultBadges = (editor) => {
   return { win: winCount, lose: loseCount };
 };
 
+// エディタの文字数をカウントする関数
+const countCharacters = (editor) => {
+  return editor?.state.doc.textContent.length || 0;
+};
+
 export default function WysiwygPage() {
   const [memoStats, setMemoStats] = useState<Memo[]>([]);
+  const [savedContent, setSavedContent, isClient] = useLocalStorage<string>(EDITOR_CONTENT_KEY, '');
+  const [isOverLimit, setIsOverLimit] = useState(false);
+  const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const lastSavedContentRef = useRef<string>('');
+
+  // エディタの内容を保存する関数（デバウンス処理付き）
+  const saveContent = useCallback((content: string) => {
+    // 最後に保存した内容と同じなら保存しない
+    if (content === lastSavedContentRef.current) return;
+
+    // 既存のタイマーがあればクリア
+    if (saveTimerRef.current) {
+      clearTimeout(saveTimerRef.current);
+    }
+
+    // 新しいタイマーをセット
+    saveTimerRef.current = setTimeout(() => {
+      setSavedContent(content);
+      lastSavedContentRef.current = content;
+    }, SAVE_DEBOUNCE_TIME);
+  }, [setSavedContent]);
 
   // エディタの初期化
   const editor = useEditor({
@@ -108,6 +142,16 @@ export default function WysiwygPage() {
     content: '',
     onUpdate: ({ editor }) => {
       const resultCounts = countResultBadges(editor);
+      const currentCharCount = countCharacters(editor);
+
+      // 文字数制限の確認
+      setIsOverLimit(currentCharCount > CHARACTER_LIMIT);
+
+      // 文字数制限を超えていなければlocalStorageに保存
+      if (currentCharCount <= CHARACTER_LIMIT) {
+        const content = editor.getHTML();
+        saveContent(content);
+      }
 
       // Generate memo stats using functional array creation
       const winMemos = Array.from({ length: resultCounts.win }, (_, i) => ({
@@ -128,12 +172,56 @@ export default function WysiwygPage() {
     },
   });
 
+  // localStorageから保存された内容を読み込む
+  useEffect(() => {
+    if (editor && isClient && savedContent) {
+      editor.commands.setContent(savedContent);
+      lastSavedContentRef.current = savedContent;
+
+      // 読み込み後の文字数制限を確認
+      const currentCharCount = countCharacters(editor);
+      setIsOverLimit(currentCharCount > CHARACTER_LIMIT);
+
+      // 読み込み完了後に勝敗カウントを更新
+      const resultCounts = countResultBadges(editor);
+      const winMemos = Array.from({ length: resultCounts.win }, (_, i) => ({
+        id: `win-${i}`,
+        title: 'Game',
+        result: 'WIN' as const,
+        memo: '',
+        createdAt: new Date().toISOString(),
+      }));
+      const loseMemos = Array.from({ length: resultCounts.lose }, (_, i) => ({
+        id: `lose-${i}`,
+        title: 'Game',
+        result: 'LOSE' as const,
+        memo: '',
+        createdAt: new Date().toISOString(),
+      }));
+      setMemoStats([...winMemos, ...loseMemos]);
+    }
+  }, [editor, isClient, savedContent]);
+
+  // コンポーネントがアンマウントされるときにタイマーをクリアする
+  useEffect(() => {
+    return () => {
+      if (saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current);
+      }
+    };
+  }, []);
+
   // WIN/LOSEを挿入するハンドラー - スペースを追加して継続して入力できるように
   const handleInsertBadge = useCallback((result: Memo['result']) => {
+    // 文字数制限を超えていたら挿入しない
+    if (isOverLimit) {
+      return;
+    }
+
     editor?.chain().focus().insertContent({ type: 'resultBadge', attrs: { result } }).run();
     // カーソルを末尾に移動して入力を継続できるようにする
     editor?.chain().focus().run();
-  }, [editor]);
+  }, [editor, isOverLimit]);
 
   return (
     <div className={styles.container}>
@@ -145,6 +233,7 @@ export default function WysiwygPage() {
               className={styles.inputButton}
               onClick={() => handleInsertBadge('WIN')}
               title="Insert WIN"
+              disabled={isOverLimit}
             >
               WIN
             </button>
@@ -152,6 +241,7 @@ export default function WysiwygPage() {
               className={styles.inputButton}
               onClick={() => handleInsertBadge('LOSE')}
               title="Insert LOSE"
+              disabled={isOverLimit}
             >
               LOSE
             </button>
@@ -191,6 +281,13 @@ export default function WysiwygPage() {
             </div>
           </div>
         </div>
+
+        {/* 文字数制限を超えた場合の警告 - 必要ならこの部分は残す */}
+        {isOverLimit && (
+          <div className={styles.limitWarning}>
+            Character limit reached! You cannot add more content.
+          </div>
+        )}
       </div>
     </div>
   );
