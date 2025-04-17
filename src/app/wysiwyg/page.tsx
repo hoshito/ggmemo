@@ -106,6 +106,7 @@ export default function WysiwygPage() {
   const [memoStats, setMemoStats] = useState<Memo[]>([]);
   const [savedContent, setSavedContent, isClient] = useLocalStorage<string>(EDITOR_CONTENT_KEY, '');
   const [isOverLimit, setIsOverLimit] = useState(false);
+  const [isStatsCollapsed, setIsStatsCollapsed] = useState(false); // 統計情報の折りたたみ状態
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
   const lastSavedContentRef = useRef<string>('');
 
@@ -252,10 +253,15 @@ export default function WysiwygPage() {
           <EditorContent editor={editor} />
         </div>
 
-        {/* 統計情報は常に表示するため条件式を削除 */}
+        {/* 統計情報カードに折りたたみ機能を追加 */}
         <div className={styles.statsOverlay}>
-          <div className={styles.statsCard}>
-            <h3>Game Stats</h3>
+          <div className={`${styles.statsCard} ${isStatsCollapsed ? styles.collapsed : ''}`}>
+            <h3 onClick={() => setIsStatsCollapsed(!isStatsCollapsed)}>
+              Game Stats
+              <span className={`${styles.collapseButton}`}>
+                <span className={styles.collapseIcon}>▲</span>
+              </span>
+            </h3>
             <div className={styles.statsFlex}>
               <div className={styles.statItem}>
                 <span className={styles.statLabel}>Wins:</span>

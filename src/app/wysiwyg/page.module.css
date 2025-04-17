@@ -195,6 +195,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(var(--foreground-rgb), 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .statsCard h3 {
@@ -203,6 +204,10 @@
   font-size: 0.9rem;
   color: var(--foreground);
   opacity: 0.9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
 .statsFlex {
@@ -225,6 +230,44 @@
   font-size: 1.1rem;
   font-weight: bold;
   color: var(--foreground);
+}
+
+/* 折りたたみ状態のカード */
+.collapsed .statsFlex,
+.collapsed .homeLink {
+  display: none;
+}
+
+/* 折りたたみボタン */
+.collapseButton {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  opacity: 0.6;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 1rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.collapseButton:hover {
+  opacity: 1;
+}
+
+/* 折りたたみアイコンの回転アニメーション */
+.collapseIcon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.collapsed .collapseIcon {
+  transform: rotate(180deg);
 }
 
 /* 文字数制限警告 */
