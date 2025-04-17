@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from 'next/navigation';
 import Header from '../Header';
 import Footer from '../Footer';
 import styles from './Layout.module.css';
@@ -10,14 +11,19 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const pathname = usePathname();
+
+  // wysiwygページではヘッダーのみ非表示にする
+  const isWysiwygPage = pathname === '/wysiwyg';
+
   return (
     <SessionProvider>
       <AuthProvider>
-        <Header />
-        <main className={styles.main}>
+        {!isWysiwygPage && <Header />}
+        <main className={`${styles.main} ${isWysiwygPage ? styles.wysiwyg : ''}`}>
           {children}
         </main>
-        <Footer />
+        {!isWysiwygPage && <Footer />}
       </AuthProvider>
     </SessionProvider>
   );
