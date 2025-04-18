@@ -4,10 +4,10 @@ import ResultBadgeView from ".";
 
 /**
  * WIN/LOSEバッジを表示するためのTipTap拡張機能
- * 
+ *
  * このエクステンションは、エディタ内にゲーム結果を示す特殊なノードを挿入します。
  * バッジはインライン要素として動作し、ユーザーはテキスト中に勝敗情報を視覚的に表現できます。
- * 
+ *
  * 機能：
  * - エディタ内で選択、ドラッグ可能なインラインノード
  * - WIN/LOSE状態の保存と表示
@@ -16,16 +16,16 @@ import ResultBadgeView from ".";
 const ResultBadgeExtension = Node.create({
   // ノードの名前（一意の識別子）
   name: "resultBadge",
-  
+
   // ノードのグループ（インライン要素として配置できる）
   group: "inline",
-  
+
   // インライン要素として機能
   inline: true,
-  
+
   // ユーザーが選択可能
   selectable: true,
-  
+
   // ドラッグ＆ドロップで移動可能
   draggable: true,
 
@@ -38,10 +38,10 @@ const ResultBadgeExtension = Node.create({
       result: {
         // デフォルト値
         default: "WIN",
-        
+
         // HTMLから属性を解析する方法
         parseHTML: (element) => element.getAttribute("data-result"),
-        
+
         // 属性をHTMLとしてレンダリングする方法
         renderHTML: (attributes) => {
           return {
@@ -62,7 +62,7 @@ const ResultBadgeExtension = Node.create({
       {
         // data-type="result-badge"属性を持つspanタグを検索
         tag: 'span[data-type="result-badge"]',
-        
+
         // 要素から属性を抽出
         getAttrs: (element) => {
           if (typeof element === "string") {

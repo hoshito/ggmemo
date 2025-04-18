@@ -70,7 +70,7 @@ export default function WysiwygPage() {
     if (editor && isClient) {
       updateMemoStats(editor);
     }
-    
+
     // コンポーネントのアンマウント時にエディターを破棄
     return () => {
       // エディターの存在確認をしてから破棄
@@ -95,7 +95,7 @@ export default function WysiwygPage() {
           />
         </div>
 
-        <div className={styles.editorContent} 
+        <div className={styles.editorContent}
           aria-label="Game notes editor"
           role="textbox"
           aria-multiline="true">
