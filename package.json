@@ -18,7 +18,6 @@
     "@headlessui/react": "^2.2.0",
     "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
-    "@tiptap/extension-color": "^2.11.7",
     "@tiptap/extension-placeholder": "^2.11.7",
     "@tiptap/pm": "^2.11.7",
     "@tiptap/react": "^2.11.7",
