@@ -1,6 +1,6 @@
 import { Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import ResultBadgeView from "./ResultBadgeView";
+import ResultBadgeView from ".";
 
 /**
  * WIN/LOSEバッジを表示するためのTipTap拡張機能
