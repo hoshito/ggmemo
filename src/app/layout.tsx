@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Layout";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -73,6 +73,9 @@ export const metadata: Metadata = {
     shortcut: { url: "/favicon.svg", type: "image/svg+xml" },
   },
   manifest: "/manifest.json",
+};
+
+export const viewport: Viewport = {
   themeColor: "#000000",
 };
 

@@ -66,6 +66,7 @@ const WysiwygEditor = ({
       // 勝敗統計を更新
       updateMemoStats(editor);
     },
+    immediatelyRender: false, // SSRのハイドレーションミスマッチを防ぐ
   });
 
   // localStorageから保存された内容を読み込む
