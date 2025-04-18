@@ -63,22 +63,26 @@ export default function WysiwygPage() {
 
   // localStorageから保存された内容を読み込む
   useEffect(() => {
-    // エディタの内容をロード
-    loadSavedContent(editor);
-
-    // エディタのロード完了後に勝敗カウントを更新
+    // エディタがnullでなく、クライアントサイドの場合のみ処理を実行
     if (editor && isClient) {
+      // エディタの内容をロード
+      loadSavedContent(editor);
+
+      // 勝敗カウントを更新
       updateMemoStats(editor);
     }
+  }, [editor, isClient, loadSavedContent, updateMemoStats]);
 
-    // コンポーネントのアンマウント時にエディターを破棄
+  // コンポーネントのアンマウント時にだけエディターを破棄する
+  useEffect(() => {
+    // クリーンアップ関数のみを定義
     return () => {
       // エディターの存在確認をしてから破棄
       if (editor) {
         editor.destroy();
       }
     };
-  }, [editor, isClient, loadSavedContent, updateMemoStats]);
+  }, [editor]); // 空の依存配列で、アンマウント時のみに実行
 
   // WIN/LOSEを挿入するハンドラー
   const handleInsertBadge = useCallback((result: Memo['result']) => {
