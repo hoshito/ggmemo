@@ -128,7 +128,7 @@ export const useEditorAutoSave = ({
         setIsOverLimit(currentCharCount > characterLimit);
       }
     },
-    [Editor, isClient, savedContent, countCharacters, characterLimit]
+    [isClient, savedContent, countCharacters, characterLimit]
   );
 
   // コンポーネントがアンマウントされるときにタイマーをクリアする

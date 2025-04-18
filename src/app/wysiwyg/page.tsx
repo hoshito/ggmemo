@@ -70,6 +70,14 @@ export default function WysiwygPage() {
     if (editor && isClient) {
       updateMemoStats(editor);
     }
+    
+    // コンポーネントのアンマウント時にエディターを破棄
+    return () => {
+      // エディターの存在確認をしてから破棄
+      if (editor) {
+        editor.destroy();
+      }
+    };
   }, [editor, isClient, loadSavedContent, updateMemoStats]);
 
   // WIN/LOSEを挿入するハンドラー
@@ -87,7 +95,10 @@ export default function WysiwygPage() {
           />
         </div>
 
-        <div className={styles.editorContent}>
+        <div className={styles.editorContent} 
+          aria-label="Game notes editor"
+          role="textbox"
+          aria-multiline="true">
           <EditorContent editor={editor} />
         </div>
 
@@ -96,7 +107,7 @@ export default function WysiwygPage() {
 
         {/* 文字数制限を超えた場合の警告 */}
         {isOverLimit && (
-          <div className={styles.limitWarning}>
+          <div className={styles.limitWarning} role="alert" aria-live="assertive">
             Character limit reached! You cannot add more content.
           </div>
         )}
