@@ -42,6 +42,16 @@ export default function Header() {
           <span className={styles.title}>GGMemo</span>
         </Link>
         <div className={styles.rightContent}>
+          {/* Wysiwyg Editor Beta リンク */}
+          <Link href="/wysiwyg" className={styles.wysiwygLink}>
+            <Button 
+              variant="outlined" 
+              size="small"
+              className={styles.wysiwygButton}
+            >
+              Wysiwyg (Beta)
+            </Button>
+          </Link>
           {status === "loading" ? null : session ? (
             <>
               <div className={styles.userInfo} onClick={handleMenuOpen}>

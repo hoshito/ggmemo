@@ -6,6 +6,7 @@
   /* メインカラー */
   --background: #4a4a7c; /* より落ち着いた紫に */
   --foreground: #ffffff; /* よりクリアな白に */
+  --foreground-muted: #ffffffaa; /* 薄いテキスト用 */
 
   /* アクセントカラー */
   --primary: #5c5c96; /* 現状維持 */
@@ -18,6 +19,14 @@
   --divider: #ffffff1a; /* 区切り線用 */
   --error: #ff4d4d; /* エラー・危険操作用 */
   --error-hover: #ff3333; /* エラー・危険操作のホバー用 */
+
+  /* RGB値として使用するための変数 */
+  --background-rgb: 74, 74, 124;
+  --foreground-rgb: 255, 255, 255;
+  --surface-rgb: 255, 255, 255;
+  --primary-rgb: 92, 92, 150;
+  --secondary-rgb: 61, 61, 102;
+  --key-rgb: 122, 115, 163;
 
   /* StatsView用の不透明な背景色 */
   --modal-background: #424272; /* より濃い紫で高コントラストを実現 */

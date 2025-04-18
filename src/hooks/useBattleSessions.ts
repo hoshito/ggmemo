@@ -27,6 +27,7 @@ export function useBattleSessions(
   const operations = useBattleSessionOperations({ state });
 
   // 初期読み込み
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     operations.fetchSessions();
     // 依存配列を operations から operations.fetchSessions に変更

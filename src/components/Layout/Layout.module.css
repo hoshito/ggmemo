@@ -7,6 +7,11 @@
   padding: 2rem 0;
 }
 
+.main.wysiwyg {
+  min-height: 100vh; /* フッターなしで画面いっぱいに表示 */
+  padding: 0;
+}
+
 @media (max-width: 768px) {
   .main {
     padding: 1rem 0;
