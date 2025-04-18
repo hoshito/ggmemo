@@ -78,8 +78,8 @@ export default function WysiwygPage() {
   }, [editor, isOverLimit, insertBadge]);
 
   return (
-    <div className={`${styles.container} ${styles.fullScreen}`}>
-      <div className={styles.zenEditor}>
+    <div className={`${styles.container} ${styles.editorPage}`}>
+      <div className={styles.editorContainer}>
         <div className={styles.floatingControls}>
           <WysiwygResultButton
             onInsertBadge={handleInsertBadge}

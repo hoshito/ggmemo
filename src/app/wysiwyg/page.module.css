@@ -11,8 +11,8 @@
   color: var(--foreground);
 }
 
-/* フルスクリーンモード */
-.fullScreen {
+/* エディタページレイアウト - 画面全体を覆う固定位置のエディタ */
+.editorPage {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,8 +22,8 @@
   background-color: var(--background);
 }
 
-/* エディター全体のラッパー */
-.zenEditor {
+/* エディタのメインコンテナ */
+.editorContainer {
   width: 100%;
   max-width: 800px;
   height: 100%;
@@ -136,61 +136,6 @@
   z-index: 10;
 }
 
-.controlsGroup {
-  display: flex;
-  gap: 0.5rem;
-  border-radius: 4px;
-}
-
-/* 入力ボタンのスタイル */
-.inputButton {
-  background-color: var(--primary);
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 0.75rem;
-  color: var(--foreground);
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-
-.inputButton:hover {
-  background-color: rgba(var(--primary-rgb), 0.8);
-  transform: translateY(-1px);
-}
-
-.inputButton:disabled {
-  background-color: rgba(var(--foreground-rgb), 0.3);
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* 勝敗バッジ */
-.winBadge {
-  background-color: rgba(74, 222, 128, 0.2);
-  border: 1px solid var(--result-win, #4ade80);
-  color: var(--result-win, #4ade80);
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin: 0 2px;
-  font-size: 0.85em;
-  display: inline-block;
-}
-
-.loseBadge {
-  background-color: rgba(96, 165, 250, 0.2);
-  border: 1px solid var(--result-lose, #60a5fa);
-  color: var(--result-lose, #60a5fa);
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin: 0 2px;
-  font-size: 0.85em;
-  display: inline-block;
-}
-
 /* 文字数制限警告 */
 .limitWarning {
   position: fixed;
@@ -226,7 +171,7 @@
     height: 100vh; /* フッターなしで画面いっぱいに */
   }
 
-  .zenEditor {
+  .editorContainer {
     padding: 0.5rem;
   }
 
