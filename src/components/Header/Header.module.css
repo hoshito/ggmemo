@@ -35,6 +35,23 @@
   gap: 1rem;
 }
 
+/* Wysiwygボタンのスタイル */
+.wysiwygLink {
+  text-decoration: none;
+}
+
+.wysiwygButton {
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  text-transform: none !important;
+  min-height: 40px !important;
+}
+
+.wysiwygButton:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: white !important;
+}
+
 .authButton {
   text-transform: none !important;
   background-color: var(--primary) !important;
@@ -76,6 +93,12 @@
 
   .title {
     font-size: 1.25rem;
+  }
+
+  .wysiwygButton {
+    font-size: 0.75rem !important;
+    padding: 4px 8px !important;
+    min-height: 36px !important;
   }
 
   .authButton {
